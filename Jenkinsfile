@@ -29,17 +29,16 @@ pipeline {
                 }
             }
         }
-        // IInitialize Terraform
+        // Initialize Terraform
         stage('Initialize Terraform Environment') {
             steps {
                 sh 'terraform init'
             }
         }
-        // Check terraform confugirations syntax
+        // Check terraform configurations syntax
         stage('Validate Terraform Configurations') {
             steps {
                 sh 'terraform validate'
-               
             }
         }
         // Generating Execution Plan
@@ -51,7 +50,7 @@ pipeline {
         // Snyk Infrastructure Automation Test
         stage('Snyk Security Test') {
             steps {
-                sh '${SNYK_HOME}/snyk-linux iac test .'
+                sh "${SNYK_HOME}/snyk-linux iac test ."
             }
         }
         // Checkov Infrastructure Automation Test
@@ -60,7 +59,7 @@ pipeline {
                 sh 'checkov -d .'
             }
         }
-        // Deployment Apporval
+        // Deployment Approval
         stage('Manual Approval') {
             steps {
                 input 'Approval Infra Deployment'
@@ -79,12 +78,15 @@ pipeline {
         //     }
         // }
     }
-//     post {
-//     always {
-//         echo 'Slack Notifications.'
-//         slackSend channel: '#ma-terraform-cicd-alerts', //update and provide your channel name
-//         color: COLOR_MAP[currentBuild.currentResult],
-//         message: "*${currentBuild.currentResult}:* Job Name '${env.JOB_NAME}' build ${env.BUILD_NUMBER} \n Build Timestamp: ${env.BUILD_TIMESTAMP} \n Project Workspace: ${env.WORKSPACE} \n More info at: ${env.BUILD_URL}"
-//     }
-//   }
+    post {
+        always {
+            echo 'Slack Notifications.'
+            slackSend(
+                channel: '#ma-terraform-cicd-alerts', // update and provide your channel name
+                color: COLOR_MAP[currentBuild.currentResult],
+                message: "*${currentBuild.currentResult}:* Job Name '${env.JOB_NAME}' build ${env.BUILD_NUMBER} \n Build Timestamp: ${env.BUILD_TIMESTAMP} \n Project Workspace: ${env.WORKSPACE} \n More info at: ${env.BUILD_URL}"
+            )
+        }
+    }
 }
+
