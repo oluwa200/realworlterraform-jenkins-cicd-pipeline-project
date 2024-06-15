@@ -72,11 +72,11 @@ pipeline {
             }
         }
         // Destroy Environment
-        stage('Terraform Destroy') {
-            steps {
-                sh 'terraform destroy --var-file=prod.tfvars --auto-approve'
-            }
-        }
+        // stage('Terraform Destroy') {
+        //     steps {
+        //         sh 'terraform destroy --var-file=prod.tfvars --auto-approve'
+        //     }
+        // }
     }
     post {
         always {
