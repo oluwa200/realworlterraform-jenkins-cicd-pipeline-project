@@ -71,12 +71,12 @@ pipeline {
                 sh 'terraform apply --auto-approve'
             }
         }
-        // Destroy Environment
-        // stage('Terraform Destroy') {
-        //     steps {
-        //         sh 'terraform destroy --var-file=prod.tfvars --auto-approve'
-        //     }
-        // }
+        Destroy Environment
+        stage('Terraform Destroy') {
+            steps {
+                sh 'terraform destroy --var-file=prod.tfvars --auto-approve'
+            }
+        }
     }
     post {
         always {
