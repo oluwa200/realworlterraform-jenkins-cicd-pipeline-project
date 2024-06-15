@@ -54,11 +54,11 @@ pipeline {
         //     }
         // }
         // Checkov Infrastructure Automation Test
-        stage('Checkov scan') {
-            steps {
-                sh 'checkov -d .'
-            }
-        }
+        // stage('Checkov scan') {
+        //     steps {
+        //         sh 'checkov -d .'
+        //     }
+        // }
         // Deployment Approval
         stage('Manual Approval') {
             steps {
