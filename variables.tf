@@ -27,7 +27,7 @@ variable "subnet_id" {
 variable "key_name" {
   type        = string
   description = "provide an existing keypair"
-  default = "Jenkins-key"
+  default = "Chncl-fwdr.key"
 }
 
 variable "user_data" {
