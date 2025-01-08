@@ -21,7 +21,7 @@ variable "instance_type" {
 variable "subnet_id" {
   type        = string
   description = "provide subnet id from your Default VPC"
-  default = "subnet-0d22c691d656204cf"
+  default = "subnet-03aea256ad5d1b924"
 }
 
 variable "key_name" {
