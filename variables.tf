@@ -2,7 +2,7 @@
 variable "vpc_id" {
   type        = string
   description = "provide vpc id"
-  default = "vpc-094d9ad1068e5b8a7"
+  default = "vpc-0911ff067cc4685c9"
 }
 
 # EC2 Web Server Variables
